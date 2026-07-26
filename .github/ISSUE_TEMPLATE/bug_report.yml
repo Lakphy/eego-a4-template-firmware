@@ -1,0 +1,66 @@
+name: Bug report
+description: Report a reproducible firmware, build, or documentation defect.
+title: "[Bug] "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not attach full flash backups, device MAC addresses, credentials, or proprietary firmware.
+  - type: input
+    id: version
+    attributes:
+      label: Template version or commit
+      placeholder: 1.0.18 or commit SHA
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Build/tooling
+        - Display/refresh
+        - Touch/input
+        - Storage/RTC/battery
+        - Wi-Fi/BLE/USB
+        - Sleep/power
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: hardware
+    attributes:
+      label: Hardware and host
+      description: EEGO A4 variant, frontlight presence, OS, PlatformIO version.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+      placeholder: Numbered, minimal steps.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior and sanitized logs
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety checks
+      options:
+        - label: I have removed MAC addresses, credentials, and private flash data.
+          required: true
+        - label: I have a 16 MiB recovery backup if this involves flashing.
+          required: false
